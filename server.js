@@ -23,7 +23,7 @@ app.get("/scrape", function(req, res) {
   axios.get("http://www.npr.org/").then(function(response) {
     var $ = cheerio.load(response.data);
 
-    $(".stories-wrap").each(function(i, element) {
+    $("[class^=story]").each(function(i, element) {
       var result = {};
 
       var title = $(element).children().find('h3.title')[0];
